@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>云盘后台管理系统</title>
+		<link rel="stylesheet" type="text/css" href="backstage.css">
+		<script src="vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="head">
+				<img src="./image/cloud.jpg" class="pic">
+				<span class="title">云盘后台管理</span>
+				<ul class="headUl">
+					<li class="headLi" ><a v-on:click="exitSign">退出登录</a></li>
+					<li class="headLi" ><a v-on:click="clearAccount">注销账号</a></li>
+					<li class="headLi"><span><img src="image/customer.png" class="pho"></span></li>
+				</ul>
+			</div>
+			<hr />
+			
+			<div class="left">
+				<ul class="leftList">
+					<li @click="changeToAllPic" v-bind:class="{check:showAllpic}"><img src="image/allPhoto.png" class="photo">所有图片</li>
+					<li @click="changeToUnchecked" v-bind:class="{check:showUnchecked}"><img src="image/pic.png" class="photo">未审核图片</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="show">
+					<div v-show="showAllpic">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr id="header">
+								<td>序号</td>
+								<td class="filename">文件名</td>
+								<td>上传者</td>
+								<td>上传时间</td>
+								<td>当前状态</td>
+							</tr>
+							
+							<tr>
+								<td>1</td>
+								<td class="filename">图片.jpg</td>
+								<td>用户名</td>
+								<td>2019/11/3  23:59</td>
+								<td>已审核</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td class="filename">图片.jpg</td>
+								<td>用户名</td>
+								<td>2019/11/3  23:59</td>
+								<td>未审核</td>
+							</tr>
+						</table>
+						<div class="bottom">
+							<ul class="showPage">
+								<li ><a><<</a></li>
+								<li >1</li>
+								<li ><a >>></a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div v-show="showUnchecked">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr id="header">
+								<td>序号</td>
+								<td class="filename">文件名</td>
+								<td>上传者</td>
+								<td>上传时间</td>
+								<td>操作</td>
+							</tr>
+							
+							<tr>
+								<td>1</td>
+								<td class="filename">图片.jpg</td>
+								<td>用户名</td>
+								<td>2019/11/3 23:59</td>
+								<td>
+									<button class="look">查看</button>
+									<button class="delete">删除</button>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td class="filename">图片.jpg</td>
+								<td>用户名</td>
+								<td>2019/11/3 23:59</td>
+								<td>
+									<button class="look">查看</button>
+									<button class="delete">删除</button>
+								</td>
+							</tr>
+						</table>
+						<div class="bottom">
+							<ul class="showPage">
+								<li><a><<</a></li>
+								<li>1</li>
+								<li><a>>></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="backstage.js"></script>
+	</body>
+</html>

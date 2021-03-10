@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的云盘</title>
+		<link rel="stylesheet" type="text/css" href="new_file.css">
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="head">
+				<img src="./image/cloud.jpg" class="pic">
+				<span class="title">你的云盘</span>
+				<ul class="headUl">
+					<li class="headLi"><a v-on:click="exitSign">退出登录</a></li>
+					<li class="headLi"><a v-on:click="clearAccount">注销账号</a></li>
+					<li class="headLi"><span class="user">用户名</span></li>
+					<li class="headLi"><span><img src="image/customer.png" class="pho"></span></li>
+				</ul>
+			</div>
+			<hr />
+			
+			<div class="left">
+				<ul class="leftList">
+					<li @click="changeToFile" v-bind:class="{check:showAllFile}"><img src="image/file.png" class="photo" >所有文件</li>
+					<li  @click="changeToPic" v-bind:class="{check:showAllPic}"><img src="image/pic.png" class="photo">图片</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="firstSec">
+					<ul class="rightList">
+						<li>
+							<button class="selectBtn" onclick="document.getElementById('fileField').click()">
+								<img src="image/post.png" class="littlePho">
+								<input id="fileField" class="fileCho" type="file" accept="image/*" class="addFile" @change="getFile($event)">上传图片
+							</button>
+						</li>
+						<li v-show="showAllFile">
+							<button type="button">
+								<img src="image/newfile.png" class="littlePho">新建文件夹
+							</button>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="show">
+					<div  v-show="showAllFile">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr id="header">
+								<td>序号</td>
+								<td class="filename">文件名</td>
+								<td>上传者</td>
+								<td>上传时间</td>
+								<td>操作</td>
+							</tr>
+							<tr v-show="!list.length">
+								<td></td>
+								<td>您还未上传任何文件</td>
+							</tr>
+							<tr v-for="(item,index) in list" v-show="list.length">
+								<td>{{index+1}}</td>
+								<td class="filename">{{item.filename}}</td>
+								<td>未命名</td>
+								<td>{{item.uploadTime}}</td>
+								<td>
+									<button class="download">下载</button>
+									<button class="delete" v-on:click="deletefile(index)">删除</button>
+								</td>
+							</tr>
+						</table>
+						<div class="bottom">
+							<ul class="showPage">
+								<li><a><<</a></li>
+								<li>1</li>
+								<li><a>>></a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div v-show="showAllPic">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr id="header">
+								<td>序号</td>
+								<td>图片名</td>
+								<td>上传者</td>
+								<td>上传时间</td>
+								<td>操作</td>
+							</tr>
+							<tr v-show="!list.length">
+								<td></td>
+								<td>您还未上传任何文件</td>
+							</tr>
+							<tr v-for="(item,index) in list" v-show="list.length">
+								<td>{{index+1}}</td>
+								<td class="filename">{{item.filename}}</td>
+								<td>未命名</td>
+								<td>{{item.uploadTime}}</td>
+								<td>
+									<button class="download">下载</button>
+									<button class="delete" v-on:click="deletefile(index)">删除</button>
+								</td>
+							</tr>
+						</table>
+						<div class="bottom">
+							<ul class="showPage">
+								<li ><a><<</a></li>
+								<li >1</li>
+								<li ><a>>></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="new_file.js"></script>
+</html>

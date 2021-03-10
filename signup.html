@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册界面</title>
+		<link rel="stylesheet" type="text/css" href="signup.css">
+		<script src="vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="box">
+				<h2>用户注册</h2>
+				<div class="item">
+					<img src="./image/man.png" class="pic"/>
+					<input type="text" class="input" id="username" placeholder="请输入用户名" v-model="username"  @blur="checkName" v-bind:class="{error:!isRightName}">
+					<span id="tip"><br>*用户名最长为12个字符，只能是中文或中文与数字的组合</span>
+					<span class="errorMes" v-show="!isRightName"><br><img src="image/error.png" class="pic">{{errorTips0}}</span>
+				</div>
+				<div class="item">
+					<img src="./image/phone.png" class="pic"/>
+					<input type="text" class="input" id="phoneNum" placeholder="请输入手机号" v-model="phoneNum"  @blur="checkPho" v-bind:class="{error:!isRightPho}">
+					<span class="errorMes" v-show="!isRightPho"><br><img src="image/error.png" class="pic">{{errorTips1}}</span>
+				</div>
+				<div class="item">
+					<img src="./image/lock.png" class="pic"/>
+					<input type="password" class="input" placeholder="请输入密码" v-model="password1" @blur="checkPass" v-bind:class="{error:!isRightPas}">
+					<span id="tip"><br>*密码长度应为8~14个字符，只能是字母和数字的组合</span>
+					<span class="errorMes" v-show="!isRightPas"><br><img src="image/error.png" class="pic">{{errorTips2}}</span>
+				</div>
+				<div class="item">
+					<img src="./image/lock.png"  class="pic" />
+					<input type="password" class="input" placeholder="请确认登录密码" v-model="password2" @blur="checkSame" v-bind:class="{error:!isSamePas}">
+					<span class="errorMes" v-show="!isSamePas"><br><img src="image/error.png" class="pic">{{errorTips3}}</span>
+				</div>
+				<button class="submit" v-on:click="uploadMes" :disabled="!isSet" v-bind:class="{set:isSet}">注 册</button>
+				<p id="bot">已有账号？<a href="signin.html">快速登录</a></p>
+			</div>
+		</div>
+		
+		<script src="signup.js"></script>
+	</body>
+</html>

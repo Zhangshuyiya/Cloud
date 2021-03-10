@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录界面</title>
+		<link rel="stylesheet" type="text/css" href="signin.css">
+		<script src="vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="box">
+				<h2>用户登录</h2>
+				<div class="item">
+					<img src="./image/man.png" / class="pic">
+					<input type="text" class="input" id="username" placeholder="请输入用户名" v-model="userName" v-bind:class="{error:!isRightName}">
+					<span class="errorMes" v-if="!isRightName"><br><img src="image/error.png" class="pic">{{errorTips1}}</span>
+				</div>
+				<div class="item">
+					<img src="./image/lock.png"/ class="pic">
+					<input type="password" class="input" placeholder="请输入密码" v-model="password" v-bind:class="{error:!isRightPas}">
+					<span class="errorMes" v-if="!isRightPas"><br><img src="image/error.png" class="pic">{{errorTips2}}</span>
+				</div>
+				<button id="submit" v-on:click="checkMes">登 录</button>
+				<p id="bot">没有账号？<a href="signup.html">立即注册</a></p>
+			</div>
+		</div>
+		
+		<script src="signin.js"></script>
+	</body>
+</html>

@@ -33,7 +33,7 @@
 					<input type="password" class="input" placeholder="请确认登录密码" v-model="password2" @blur="checkSame" v-bind:class="{error:!isSamePas}">
 					<span class="errorMes" v-show="!isSamePas"><br><img src="image/error.png" class="pic">{{errorTips3}}</span>
 				</div>
-				<button class="submit" v-on:click="uploadMes" :disabled="!isSet" v-bind:class="{set:isSet}">注 册</button>
+				<button class="submit" :disabled="!isSet" v-bind:class="{set:isSet}">注 册</button>
 				<p id="bot">已有账号？<a href="signin.html">快速登录</a></p>
 			</div>
 		</div>
